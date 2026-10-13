@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>楊梅高中分機一覽表 - 桃園市立楊梅高級中等學校語音電話資訊網</title>
+  <meta name="description" content="桃園市立楊梅高級中等學校語音電話分機一覽表，提供即時檢索、各處室分類瀏覽、館舍導覽、一鍵撥號與互動音效。">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- 外部樣式表 -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 預載關鍵圖示風格 -->
+  <style>
+    /* 初始防閃爍與微調 */
+    .fade-in { animation: fadeIn 0.3s ease-in-out; }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       頂部導覽列 (Site Header)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#" class="brand-group" title="回到頂部">
+        <div class="school-badge-icon">
+          <!-- 楊梅高中校徽意象 SVG -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+            <path d="M6 6h10"></path>
+            <path d="M6 10h10"></path>
+            <path d="M6 14h7"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>
+            <span>楊梅高中分機一覽表</span>
+            <span class="brand-badge">最新修訂</span>
+          </h1>
+          <div class="brand-subtitle">桃園市立楊梅高級中等學校 • 代表號 (03) 478-9618</div>
+        </div>
+      </a>
+
+      <!-- 快捷工具群 (字體調整、音效開關、常用清單、列印) -->
+      <div class="nav-actions">
+        <!-- 字體放大友善工具 -->
+        <button id="fontToggleBtn" class="icon-btn" title="切換文字大小以利閱讀">
+          🔤 字體：標準 A
+        </button>
+
+        <!-- 音效開關 -->
+        <button id="soundToggleBtn" class="icon-btn primary" title="開啟或關閉撥號與點擊音效">
+          🔊 音效開
+        </button>
+
+        <!-- 列印分機表 -->
+        <button id="printBtn" class="icon-btn" title="列印或另存為 A4 紙本分機表">
+          🖨️ 列印表單
+        </button>
+
+        <!-- 匯入或更新 PDF / 文字 -->
+        <button id="importDataBtn" class="icon-btn" title="匯入或上傳自訂分機資料">
+          📥 匯入/更新
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Hero 主視覺形象區塊 (Hero Banner)
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-title-group">
+            <h2>楊梅高中校園語音電話分機一覽表</h2>
+            <p class="hero-desc">
+              歡迎使用全校處室、教職員、專科教室與服務窗口互動檢索系統。支援跨載具即時搜尋、樓層館舍導覽、一鍵複製與模擬語音撥號。
+            </p>
+            <div class="hero-badges-row">
+              <span class="hero-badge-pill" title="代表號">
+                📞 總機：(03) 478-9618
+              </span>
+              <span class="hero-badge-pill" title="第二外線">
+                📞 二線：(03) 478-0449
+              </span>
+              <span class="hero-badge-pill" title="第三外線">
+                📞 三線：(03) 478-0740
+              </span>
+              <span class="hero-badge-pill" title="校址">
+                📍 桃園市楊梅區高獅路5號
+              </span>
+            </div>
+          </div>
+
+          <!-- 英雄右側快捷通話卡 -->
+          <div class="hero-quick-call">
+            <div class="call-title">學校語音總機代表號</div>
+            <div class="call-number">(03) 478-9618</div>
+            <button id="heroCallBtn" class="call-btn-trigger">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>虛擬撥號模擬器</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       常用情境智能導航 (Smart FAQ Quick Guides)
+       ======================================================================== -->
+  <section class="quick-guides-section">
+    <div class="container">
+      <div class="section-header-title">
+        <h3 class="section-title">
+          <span>💡</span>
+          <span>常見問題快速找人指南（點擊立即檢索）</span>
+        </h3>
+      </div>
+      <div id="quickGuidesContainer" class="guides-scroll-track">
+        <!-- 由 app.js 動態渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       搜尋與多維度篩選中心 (Search & Filter Control Hub)
+       ======================================================================== -->
+  <section class="search-control-section">
+    <div class="container">
+      <div class="control-panel-card">
+        <!-- 搜尋列 -->
+        <div class="search-input-box">
+          <div class="search-icon-decor">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="mainSearchInput" 
+            class="main-search-input" 
+            placeholder="請輸入分機號碼（如 1201）、處室（如 教務）、職稱（如 組長）、姓名或業務關鍵字..." 
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <span class="search-hotkeys-hint">快速鍵 /</span>
+          <button id="searchClearBtn" class="search-clear-btn" title="清除搜尋內容">✕</button>
+        </div>
+
+        <!-- 處室分類標籤列 (Category Pills) -->
+        <div id="categoryPillsContainer" class="category-pills-row">
+          <!-- 由 app.js 動態渲染 -->
+        </div>
+
+        <!-- 視圖與細項控制工具列 -->
+        <div class="toolbar-row">
+          <!-- 視圖切換模式 (處室卡片 / 列表表格 / 館舍導覽) -->
+          <div class="view-modes-group">
+            <button class="view-mode-btn active" data-view="cards">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>處室卡片</span>
+            </button>
+            <button class="view-mode-btn" data-view="table">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              <span>精簡列表</span>
+            </button>
+            <button class="view-mode-btn" data-view="buildings">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path><path d="M9 9h1"></path><path d="M9 13h1"></path><path d="M9 17h1"></path><path d="M14 9h1"></path><path d="M14 13h1"></path><path d="M14 17h1"></path></svg>
+              <span>校園館舍</span>
+            </button>
+          </div>
+
+          <!-- 篩選與排序工具 -->
+          <div class="toolbar-options">
+            <!-- 常用分機過濾器 -->
+            <button id="favFilterBtn" class="icon-btn" title="只查看加入星號的分機">
+              ⭐ 我的常用 (0)
+            </button>
+
+            <!-- 館舍快速篩選 -->
+            <select id="buildingFilterSelect" class="select-filter" aria-label="依校園館舍篩選">
+              <option value="all">🏢 全校所有館舍</option>
+              <option value="admin">行政大樓 (1F~4F)</option>
+              <option value="yunhui">蘊慧樓 (專任辦公室)</option>
+              <option value="rixin">日新樓 (專三/特教/實習)</option>
+              <option value="huaide">懷德樓 (高一導師室/活動中心)</option>
+              <option value="hongdao">弘道樓 (高二/高三導師室)</option>
+              <option value="library_bld">圖資大樓 (圖書館/電腦教室)</option>
+              <option value="gym">體育館 (球場/器材室)</option>
+              <option value="gate">校門大門 (警衛室)</option>
+            </select>
+
+            <!-- 排序選單 -->
+            <select id="sortSelect" class="select-filter" aria-label="分機排序方式">
+              <option value="ext_asc">🔢 分機號碼 (由小到大)</option>
+              <option value="ext_desc">🔢 分機號碼 (由大到小)</option>
+              <option value="dept">🏢 依處室名稱筆劃</option>
+              <option value="fav_first">⭐ 我的常用分機優先</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       資料呈現區塊 (Data Display Views)
+       ======================================================================== -->
+  <main class="container" style="flex: 1;">
+    <!-- 結果統計摘要條 -->
+    <div id="resultsSummaryBar" class="results-summary-bar">
+      <!-- 由 app.js 動態渲染 -->
+    </div>
+
+    <!-- 視圖 1：處室卡片網格 (Cards View) -->
+    <section id="cardsViewContainer" class="cards-grid-view">
+      <!-- 由 app.js 動態渲染 -->
+    </section>
+
+    <!-- 視圖 2：列表表格 (Table View) -->
+    <section id="tableViewContainer" class="table-view-container" style="display: none;">
+      <div class="table-responsive">
+        <table class="ext-table">
+          <thead>
+            <tr>
+              <th style="width: 50px; text-align: center;">常用</th>
+              <th style="width: 100px;">分機號碼</th>
+              <th>處室單位</th>
+              <th>職稱</th>
+              <th>承辦人 / 老師</th>
+              <th>位置與樓層</th>
+              <th>主要業務職掌</th>
+              <th style="width: 130px; text-align: right;">操作</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyContainer">
+            <!-- 由 app.js 動態渲染 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 視圖 3：校園館舍導覽 (Building View) -->
+    <section id="buildingViewContainer" class="building-view-container" style="display: none;">
+      <aside class="building-sidebar" id="buildingTabsContainer">
+        <!-- 由 app.js 動態渲染館舍分頁標籤 -->
+      </aside>
+      <div class="building-content-panel" id="buildingContentPanel">
+        <!-- 由 app.js 動態渲染該館舍的分機清單 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       虛擬電話撥號盤對話框 (Interactive Dialpad Modal)
+       ======================================================================== -->
+  <div id="dialpadModalOverlay" class="modal-overlay">
+    <div class="dialpad-modal">
+      <button id="dialpadModalClose" class="modal-close-btn" title="關閉">✕</button>
+
+      <div class="dialpad-header">
+        <div style="font-size: 32px; margin-bottom: 6px;">☎️</div>
+        <h3>楊梅高中語音電話撥號盤</h3>
+      </div>
+
+      <!-- 撥號螢幕面板 -->
+      <div class="dial-display-card">
+        <div id="modalDialStatus" class="dial-status-text">楊梅高中代表號 (03) 478-9618</div>
+        <div id="modalDialNumber" class="dial-number-view">1201</div>
+        <div id="modalTargetName" class="dial-target-name">教務處 - 教務主任</div>
+      </div>
+
+      <!-- 12 鍵真實電話撥盤 (點擊觸發 DTMF 雙音頻) -->
+      <div class="keys-grid">
+        <button class="dial-key" data-key="1">
+          <span class="key-digit">1</span>
+          <span class="key-letters"></span>
+        </button>
+        <button class="dial-key" data-key="2">
+          <span class="key-digit">2</span>
+          <span class="key-letters">ABC</span>
+        </button>
+        <button class="dial-key" data-key="3">
+          <span class="key-digit">3</span>
+          <span class="key-letters">DEF</span>
+        </button>
+        <button class="dial-key" data-key="4">
+          <span class="key-digit">4</span>
+          <span class="key-letters">GHI</span>
+        </button>
+        <button class="dial-key" data-key="5">
+          <span class="key-digit">5</span>
+          <span class="key-letters">JKL</span>
+        </button>
+        <button class="dial-key" data-key="6">
+          <span class="key-digit">6</span>
+          <span class="key-letters">MNO</span>
+        </button>
+        <button class="dial-key" data-key="7">
+          <span class="key-digit">7</span>
+          <span class="key-letters">PQRS</span>
+        </button>
+        <button class="dial-key" data-key="8">
+          <span class="key-digit">8</span>
+          <span class="key-letters">TUV</span>
+        </button>
+        <button class="dial-key" data-key="9">
+          <span class="key-digit">9</span>
+          <span class="key-letters">WXYZ</span>
+        </button>
+        <button class="dial-key" data-key="*">
+          <span class="key-digit">*</span>
+        </button>
+        <button class="dial-key" data-key="0">
+          <span class="key-digit">0</span>
+          <span class="key-letters">+</span>
+        </button>
+        <button class="dial-key" data-key="#">
+          <span class="key-digit">#</span>
+        </button>
+      </div>
+
+      <!-- 退格與控制列 -->
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+        <button id="dialpadBackspace" class="icon-btn" style="padding: 6px 14px; font-size: 13px;">
+          ⌫ 刪除一碼
+        </button>
+      </div>
+
+      <!-- 通話動作 (模擬連線撥打 / 手機真實連線) -->
+      <div class="dial-actions-grid">
+        <button id="dialpadSimCallBtn" class="sim-call-btn">
+          <span>🔊</span>
+          <span>模擬分機撥號</span>
+        </button>
+        <a id="modalRealCallLink" href="tel:034789618" class="real-call-btn">
+          <span>📱</span>
+          <span>手機直接撥打</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       資料匯入與更新對話框 (Import Data Modal)
+       ======================================================================== -->
+  <div id="importModalOverlay" class="modal-overlay">
+    <div class="import-modal">
+      <button id="importModalClose" class="modal-close-btn" title="關閉">✕</button>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 32px; margin-bottom: 6px;">📥</div>
+        <h3 style="font-size: var(--font-xl); font-weight: 800; color: var(--text-main);">匯入或更新分機清單</h3>
+        <p style="font-size: var(--font-sm); color: var(--text-muted);">
+          支援將您現有的 PDF 內文、純文字或 JSON 直接貼上或更新
+        </p>
+      </div>
+
+      <div class="drop-zone" id="pdfDropZone">
+        <div style="font-size: 28px; margin-bottom: 8px;">📄</div>
+        <div style="font-weight: 700; color: var(--text-main); margin-bottom: 4px;">貼上或輸入分機文字</div>
+        <div style="font-size: var(--font-xs); color: var(--text-light);">
+          系統將自動智慧比對 4 碼數字分機與處室名稱並立即建立索引
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <label for="importRawText" style="display: block; font-size: var(--font-sm); font-weight: 700; margin-bottom: 6px;">
+          貼上分機文字（每行包含分機號碼與處室，例如：教務處 1201 或 1352 生輔組）：
+        </label>
+        <textarea 
+          id="importRawText" 
+          rows="5" 
+          style="width: 100%; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: monospace; font-size: var(--font-sm);" 
+          placeholder="例如：&#10;1201 教務處 主任&#10;1301 學務處 主任&#10;1401 總務處 主任&#10;1110 警衛室 保全"
+        ></textarea>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: flex-end;">
+        <button id="resetDefaultDataBtn" class="icon-btn" style="color: #DC2626;">
+          還原官方預設完整資料
+        </button>
+        <button id="doParseImportBtn" class="icon-btn primary">
+          開始智慧解析並匯入
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 快顯通知容器 -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ========================================================================
+       頁尾 (Site Footer)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h4>桃園市立楊梅高級中等學校 (YMHS)</h4>
+          <p style="margin-bottom: 8px;">校址：326002 桃園市楊梅區高獅路5號</p>
+          <p style="margin-bottom: 8px;">學校代表號：(03) 478-9618 | 二線：(03) 478-0449 | 三線：(03) 478-0740</p>
+          <p>重要處室傳真：教務 (03) 488-2675 | 學務 (03) 478-2322 | 總務 (03) 478-0164 | 輔導 (03) 475-8437</p>
+        </div>
+
+        <div class="footer-links">
+          <h5>相關連結</h5>
+          <ul>
+            <li><a href="https://www.ymhs.tyc.edu.tw" target="_blank" rel="noopener">楊梅高中全球資訊網</a></li>
+            <li><a href="https://www.ymhs.tyc.edu.tw/ischool/public/volunteer/index.php?id=907" target="_blank" rel="noopener">學務處行政人員名冊</a></li>
+            <li><a href="https://tyc.edu.tw" target="_blank" rel="noopener">桃園市政府教育局</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>緊急與校園守護</h5>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="handleCardDial('1119')">健康中心急救 (分機 1119)</a></li>
+            <li><a href="javascript:void(0)" onclick="handleCardDial('1353')">24H 校安值勤 (分機 1353)</a></li>
+            <li><a href="javascript:void(0)" onclick="handleCardDial('1110')">大門警衛門禁 (分機 1110)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 桃園市立楊梅高級中等學校 校園語音電話分機一覽表 互動資訊網</div>
+        <div>設計符合手機/平板/電腦響應式操作 • 支援 Web Audio API DTMF 擬真撥號與無障礙字體放大</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 引用腳本庫 (依序載入：資料庫 -> 音效合成引擎 -> 互動核心) -->
+  <script src="data.js"></script>
+  <script src="sound.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
